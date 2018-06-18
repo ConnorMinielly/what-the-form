@@ -2,6 +2,8 @@
   "name": "what-the-form",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Connor Minielly <Connor_Minielly@Outlook.com>",
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
