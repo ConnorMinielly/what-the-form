@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Button from '../components/Button';
 import ShortText from '../components/ShortText';
 import LongText from '../components/LongText';
@@ -9,9 +9,17 @@ const components = {
   long: LongText,
 };
 
-export const wtf = (strings, ...vals) => {
-  console.log(strings);
-  console.log(vals);
-  const Component = components[vals[0][0]];
-  return () => <Component />;
+export const wtf = (strings, ...parts) => {
+  return () => (
+    <div>
+      {parts.map(part => {
+        return composeComponent(part);
+      })}
+    </div>
+  );
+};
+
+const composeComponent = part => {
+  const Comp = components[part.type];
+  return <Comp {...part} />;
 };
