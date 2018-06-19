@@ -7,3 +7,5 @@
 # What The Form?
 
 A Form generator for sematic-ui forms that uses tagged templates.
+
+right now this is just a test/learning project.
