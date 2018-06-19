@@ -5,6 +5,7 @@ import { Dropdown } from 'semantic-ui-react';
 class wtfDropdown extends Component {
   render() {
     return (
+      // eslint-disable-next-line
       <Dropdown placeholder={this.props.placeholder} fluid selection options={this.props.options} />
     );
   }
