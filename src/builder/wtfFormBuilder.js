@@ -28,6 +28,7 @@ const composeComponent = (part) => {
   return <Comp>{part.children.map(p => composeComponent(p))}</Comp>;
 };
 
+// eslint-disable-next-line
 const wtf = (strings, ...parts) => ({ className }) => (
   <Form className={className}>
     {strings[0] && <h1>{strings[0]}</h1>}
