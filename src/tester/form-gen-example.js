@@ -12,8 +12,16 @@ const options = [
 ];
 
 export const InitialForm = wtf`
+  What-The-Form Test!
+  ${{
+    type: 'group',
+    children: [
+      { type: 'short', placeholder: 'Test...' },
+      { type: 'short', placeholder: 'Test...' },
+    ],
+  }}
   ${{ type: 'long', placeholder: 'Hello World! What The Form?' }}
   ${{ type: 'button', text: 'test' }}
-  ${{ type: 'check', label: 'Fuck off' }}
+  ${{ type: 'check', label: 'Watch your language' }}
   ${{ type: 'drop', placeholder: 'select...', options: options }}
 `;

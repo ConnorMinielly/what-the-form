@@ -5,6 +5,7 @@ import wtf_LongText from '../components/LongText';
 import wtf_Checkbox from '../components/Checkbox';
 import wtf_Dropdown from '../components/Dropdown';
 import 'semantic-ui-css/semantic.min.css';
+import { Form } from 'semantic-ui-react';
 
 const components = {
   button: wtf_Button,
@@ -12,19 +13,34 @@ const components = {
   long: wtf_LongText,
   check: wtf_Checkbox,
   drop: wtf_Dropdown,
+  group: Form.Group,
 };
 
 export const wtf = (strings, ...parts) => {
   return ({ className }) => (
-    <div className={className}>
+    <Form className={className}>
       {parts.map(part => {
         return composeComponent(part);
       })}
-    </div>
+    </Form>
   );
 };
 
 const composeComponent = part => {
   const Comp = components[part.type];
-  return <Comp {...part} />;
+  if (Comp.name !== 'FormGroup') {
+    return (
+      <Form.Field>
+        <Comp {...part} />
+      </Form.Field>
+    );
+  } else {
+    return (
+      <Comp>
+        {part.children.map(p => {
+          return composeComponent(p);
+        })}
+      </Comp>
+    );
+  }
 };
