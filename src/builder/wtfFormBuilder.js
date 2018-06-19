@@ -1,33 +1,22 @@
-import React from 'react';
-import wtf_Button from '../components/Button';
-import wtf_ShortText from '../components/ShortText';
-import wtf_LongText from '../components/LongText';
-import wtf_Checkbox from '../components/Checkbox';
-import wtf_Dropdown from '../components/Dropdown';
 import 'semantic-ui-css/semantic.min.css';
+import React from 'react';
 import { Form } from 'semantic-ui-react';
+import wtfButton from '../components/Button';
+import wtfShortText from '../components/ShortText';
+import wtfLongText from '../components/LongText';
+import wtfCheckbox from '../components/Checkbox';
+import wtfDropdown from '../components/Dropdown';
 
 const components = {
-  button: wtf_Button,
-  short: wtf_ShortText,
-  long: wtf_LongText,
-  check: wtf_Checkbox,
-  drop: wtf_Dropdown,
+  button: wtfButton,
+  short: wtfShortText,
+  long: wtfLongText,
+  check: wtfCheckbox,
+  drop: wtfDropdown,
   group: Form.Group,
 };
 
-export const wtf = (strings, ...parts) => {
-  return ({ className }) => (
-    <Form className={className}>
-      {strings[0] && <h1>{strings[0]}</h1>}
-      {parts.map(part => {
-        return composeComponent(part);
-      })}
-    </Form>
-  );
-};
-
-const composeComponent = part => {
+const composeComponent = (part) => {
   const Comp = components[part.type];
   if (Comp.name !== 'FormGroup') {
     return (
@@ -35,13 +24,15 @@ const composeComponent = part => {
         <Comp {...part} />
       </Form.Field>
     );
-  } else {
-    return (
-      <Comp>
-        {part.children.map(p => {
-          return composeComponent(p);
-        })}
-      </Comp>
-    );
   }
+  return <Comp>{part.children.map(p => composeComponent(p))}</Comp>;
 };
+
+const wtf = (strings, ...parts) => ({ className }) => (
+  <Form className={className}>
+    {strings[0] && <h1>{strings[0]}</h1>}
+    {parts.map(part => composeComponent(part))}
+  </Form>
+);
+
+export default wtf;

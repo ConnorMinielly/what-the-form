@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
 
-class wtf_ShortText extends Component {
+class wtfShortText extends Component {
   render() {
     return <Input placeholder={this.props.placeholder} />;
   }
 }
-export default wtf_ShortText;
+export default wtfShortText;
