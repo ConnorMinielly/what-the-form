@@ -1,0 +1,22 @@
+{
+  "name": "what-the-form",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "author": "Connor Minielly <Connor_Minielly@Outlook.com>",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4",
+    "semantic-ui-css": "^2.3.2",
+    "semantic-ui-react": "^0.81.1",
+    "styled-components": "^3.3.2",
+    "with-coffee": "^1.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
