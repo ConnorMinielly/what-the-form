@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { InitialForm } from './form-gen-example';
 
 class App extends Component {
