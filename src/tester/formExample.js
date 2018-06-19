@@ -2,10 +2,12 @@ import { wtf } from '../builder/wtfFormBuilder';
 
 const options = [
   {
+    key: '1',
     text: 'Example 1',
     value: 1,
   },
   {
+    key: '2',
     text: 'Example 2',
     value: 2,
   },

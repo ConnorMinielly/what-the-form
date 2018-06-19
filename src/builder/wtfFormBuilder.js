@@ -19,6 +19,7 @@ const components = {
 export const wtf = (strings, ...parts) => {
   return ({ className }) => (
     <Form className={className}>
+      {strings[0] && <h1>{strings[0]}</h1>}
       {parts.map(part => {
         return composeComponent(part);
       })}
