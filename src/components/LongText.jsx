@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import { Form, TextArea } from 'semantic-ui-react';
 
-class LongText extends Component {
+class wtf_LongText extends Component {
   render() {
-    return <input type="text" placeholder={this.props.text} />;
+    return (
+      <Form>
+        <TextArea placeholder={this.props.placeholder} />
+      </Form>
+    );
   }
 }
-export default LongText;
+export default wtf_LongText;
