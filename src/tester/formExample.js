@@ -1,4 +1,4 @@
-import { wtf } from '../builder/wtfFormBuilder';
+import wtf from '../builder/wtfFormBuilder';
 
 const options = [
   {
