@@ -22,3 +22,54 @@ This is probably gonna be a controversial portion of this project, using a tagge
 2.  We are able to insert functions for various processes like field validation into the "JSON" using `key: ${functionName}`
 3.  The tag syntax is clear and succinct, it's nicer to look at and nicer to write and leaves to door open to larger changes to the form definition syntax.
 4.  We can create IDE extensions to provide code highlighting and auto-complete suggestions.
+
+# How The Form?
+
+this isn't a npm package yet because we're scrubs and we're still learning how to do that kinda stuff, but here's how it works in the code base so far:
+
+```javascript
+import React, { Component } from 'react';
+import wtf from '../builder/wtfFormBuilder'; // This will change.
+
+// This'll all change too!
+
+// define an array of options for the dropdown control.
+const options = [
+  {
+    key: '1',
+    text: 'Example 1',
+    value: 1,
+  },
+  {
+    key: '2',
+    text: 'Example 2',
+    value: 2,
+  },
+];
+
+// Create the form component
+const WtfForm = wtf`
+  What-The-Form Test!
+  ${{
+    type: 'group',
+    children: [
+      { type: 'short', placeholder: 'Test...' },
+      { type: 'short', placeholder: 'Test...' },
+    ],
+  }}
+  ${{ type: 'long', placeholder: 'Hello World! What The Form?' }}
+  ${{ type: 'button', text: 'test' }}
+  ${{ type: 'check', label: 'Watch your language' }}
+  ${{ type: 'drop', placeholder: 'select...', options }}
+`;
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <WtfForm /> <!-- The Form is rendered here -->
+      </div>
+    );
+  }
+}
+```
