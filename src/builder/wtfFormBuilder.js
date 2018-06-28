@@ -16,36 +16,24 @@ const components = {
   group: Form.Group,
 };
 
-function* composeForm(formDef) {
-  for (const prop in formDef) {
-    yield composeComponent(prop, formDef);
-  }
-}
-
-const composeComponent = (prop, formDef) => {
-  console.log(formDef[prop]);
-  const Comp = components[prop];
+const composeComponent = (prop) => {
+  const Comp = components[prop[0].replace(/[0-9]/g, '')];
   if (Comp.name !== 'FormGroup') {
     return (
       <Form.Field>
-        <Comp {...formDef[prop]} />
+        <Comp {...prop[1]} />
       </Form.Field>
     );
   }
-  return <Comp>{formDef[prop].map(p => composeComponent(p))}</Comp>;
+  return <Comp>{Object.entries(prop[1]).map(p => composeComponent(p))}</Comp>;
 };
 
 // eslint-disable-next-line
 const wtf = formDef => ({ className }) => {
-  // console.log(test);
-  // test.splice(1, 0, deepToString(parts[0]));
-  // console.log(test);
-  // const obj = Function(`"use strict"; return(${strings.join('')})`)();
-  console.log(formDef);
   return (
     <Form className={className}>
       {formDef.header && <h1>{formDef.header}</h1>}
-      {composeForm(formDef)}
+      {Object.entries(formDef).map(ent => composeComponent(ent))}
     </Form>
   );
 };
