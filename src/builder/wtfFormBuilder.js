@@ -16,24 +16,38 @@ const components = {
   group: Form.Group,
 };
 
-const composeComponent = (part) => {
-  const Comp = components[part.type];
+function* composeForm(formDef) {
+  for (const prop in formDef) {
+    yield composeComponent(prop, formDef);
+  }
+}
+
+const composeComponent = (prop, formDef) => {
+  console.log(formDef[prop]);
+  const Comp = components[prop];
   if (Comp.name !== 'FormGroup') {
     return (
       <Form.Field>
-        <Comp {...part} />
+        <Comp {...formDef[prop]} />
       </Form.Field>
     );
   }
-  return <Comp>{part.children.map(p => composeComponent(p))}</Comp>;
+  return <Comp>{formDef[prop].map(p => composeComponent(p))}</Comp>;
 };
 
 // eslint-disable-next-line
-const wtf = (strings, ...parts) => ({ className }) => (
-  <Form className={className}>
-    {strings[0] && <h1>{strings[0]}</h1>}
-    {parts.map(part => composeComponent(part))}
-  </Form>
-);
+const wtf = formDef => ({ className }) => {
+  // console.log(test);
+  // test.splice(1, 0, deepToString(parts[0]));
+  // console.log(test);
+  // const obj = Function(`"use strict"; return(${strings.join('')})`)();
+  console.log(formDef);
+  return (
+    <Form className={className}>
+      {formDef.header && <h1>{formDef.header}</h1>}
+      {composeForm(formDef)}
+    </Form>
+  );
+};
 
 export default wtf;

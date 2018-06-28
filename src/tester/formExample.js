@@ -12,8 +12,9 @@ const options = [
     value: 2,
   },
 ];
+
 // eslint-disable-next-line
-export const InitialForm = wtf`
+/*export const InitialForm = wtf`
   What-The-Form Test!
   ${{
     type: 'group',
@@ -26,17 +27,17 @@ export const InitialForm = wtf`
   ${{ type: 'button', text: 'test' }}
   ${{ type: 'check', label: 'Watch your language' }}
   ${{ type: 'drop', placeholder: 'select...', options }}
-`;
+`;*/
 
 /* TODO: assess if this project would be better served by using a
 json format? NOTE: Json doesn't like duplicate keys. */
 
-/* EG
-
-const form = {
-  group: { short: { placeholder: 'Test...' }, short: { placeholder: 'Test...' } },
-  long: { placeholder: 'example example' },
-  long: { placeholder: 'Hello World! What The Form?' },
+// eslint-disable-next-line
+export const InitialForm = wtf({
+  group: { short1: { placeholder: 'Test...' }, short2: { placeholder: 'Test...' } },
+  long1: { placeholder: 'example example' },
+  long2: { placeholder: 'Hello World! What The Form?' },
   button: { type: 'button', text: 'test' },
   check: { label: 'Watch your language' },
-}; */
+  drop: { placeholder: 'select...', options },
+});
