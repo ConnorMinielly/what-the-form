@@ -15,6 +15,7 @@ const options = [
 
 // eslint-disable-next-line
 export const InitialForm = wtf({
+  header: 'What the Form?',
   group: { short1: { placeholder: 'Test...' }, short2: { placeholder: 'Test...' } },
   long1: { placeholder: 'example example' },
   long2: { placeholder: 'Hello World! What The Form?' },

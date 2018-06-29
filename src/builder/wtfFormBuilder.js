@@ -32,8 +32,7 @@ const composeComponent = (prop) => {
 const wtf = formDef => ({ className }) => {
   return (
     <Form className={className}>
-      {formDef.header && <h1>{formDef.header}</h1>}
-      {Object.entries(formDef).map(ent => composeComponent(ent))}
+      {Object.entries(formDef).map(entry => (entry[0] !== 'header' ? composeComponent(entry) : <h1>{formDef.header}</h1>))}
     </Form>
   );
 };
