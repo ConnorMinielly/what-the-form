@@ -1,13 +1,6 @@
-import React, { Component } from 'react';
-import { Dropdown } from 'semantic-ui-react';
+import React from 'react';
+import { Form, Select } from 'semantic-ui-react';
 
-// eslint-disable-next-line
-class wtfDropdown extends Component {
-  render() {
-    return (
-      // eslint-disable-next-line
-      <Dropdown placeholder={this.props.placeholder} fluid selection options={this.props.options} />
-    );
-  }
-}
+const wtfDropdown = props => <Form.Field control={Select} {...props} />;
+
 export default wtfDropdown;

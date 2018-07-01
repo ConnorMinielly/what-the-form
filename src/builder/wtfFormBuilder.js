@@ -1,5 +1,5 @@
 import 'semantic-ui-css/semantic.min.css';
-import React from 'react';
+import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 import wtfButton from '../components/Button';
 import wtfShortText from '../components/ShortText';
@@ -16,25 +16,36 @@ const components = {
   group: Form.Group,
 };
 
-const composeComponent = (prop) => {
-  const Comp = components[prop[0].replace(/[0-9]/g, '')];
+const composeComponent = (componentData, handleChange) => {
+  const Comp = components[componentData[0].replace(/[0-9]/g, '')];
   if (Comp.name !== 'FormGroup') {
-    return (
-      <Form.Field>
-        <Comp {...prop[1]} />
-      </Form.Field>
-    );
+    return <Comp onChange={handleChange} {...componentData[1]} />;
   }
-  return <Comp>{Object.entries(prop[1]).map(p => composeComponent(p))}</Comp>;
+  return <Comp>{Object.entries(componentData[1]).map(p => composeComponent(p))}</Comp>;
 };
 
-// eslint-disable-next-line
-const wtf = formDef => ({ className }) => {
-  return (
-    <Form className={className}>
-      {Object.entries(formDef).map(entry => (entry[0] !== 'header' ? composeComponent(entry) : <h1>{formDef.header}</h1>))}
-    </Form>
-  );
-};
+const wtf = formDef =>
+  class wtfForm extends Component {
+    state = {};
+
+    handleChange = (e, { name, value }) => {
+      if (name !== undefined) {
+        this.setState({ [name]: value });
+      }
+    };
+
+    render(className) {
+      return (
+        <Form className={className} onSubmit={() => formDef.onSubmit(this.state)}>
+          {Object.entries(formDef).map(entry =>
+              (entry[0] !== 'header' ? (
+                entry[0] !== 'onSubmit' && composeComponent(entry, this.handleChange)
+              ) : (
+                <h1>{formDef.header}</h1>
+              )))}
+        </Form>
+      );
+    }
+  };
 
 export default wtf;
