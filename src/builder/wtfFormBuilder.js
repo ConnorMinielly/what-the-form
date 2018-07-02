@@ -9,10 +9,10 @@ import wtfDropdown from '../components/Dropdown';
 
 const components = {
   button: wtfButton,
-  short: wtfShortText,
-  long: wtfLongText,
-  check: wtfCheckbox,
-  drop: wtfDropdown,
+  inputLine: wtfShortText,
+  inputArea: wtfLongText,
+  checkbox: wtfCheckbox,
+  select: wtfDropdown,
   group: Form.Group,
 };
 

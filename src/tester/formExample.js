@@ -17,14 +17,15 @@ const submitHandler = (state) => {
   console.log(state);
 };
 
-// eslint-disable-next-line
-export const InitialForm = wtf({
+const InitialForm = wtf({
   header: 'What the Form?',
   onSubmit: submitHandler,
-  group: { short1: { placeholder: 'Test...' }, short2: { placeholder: 'Test...' } },
-  long1: { placeholder: 'example example', name: 'firstName' },
-  long2: { placeholder: 'Hello World! What The Form?', name: 'lastName' },
+  group: { inputLine1: { placeholder: 'Test...' }, inputLine2: { placeholder: 'Test...' } },
+  inputArea1: { placeholder: 'example example', name: 'firstName' },
+  inputArea2: { placeholder: 'Hello World! What The Form?', name: 'lastName' },
   button: { text: 'test' },
-  check: { label: 'Watch your language', name: 'isDead' },
-  drop: { placeholder: 'select...', options, name: 'select' },
+  checkbox: { label: 'Watch your language', name: 'isDead' },
+  select: { placeholder: 'select...', options, name: 'select' },
 });
+
+export default InitialForm;
