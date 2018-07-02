@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import { Input } from 'semantic-ui-react';
+import React from 'react';
+import { Form, Input } from 'semantic-ui-react';
 
-// eslint-disable-next-line
-class wtfShortText extends Component {
-  render() {
-    return <Input placeholder={this.props.placeholder} />;
-  }
-}
+const wtfShortText = props => <Form.Input control={Input} {...props} />;
+
 export default wtfShortText;

@@ -12,31 +12,20 @@ const options = [
     value: 2,
   },
 ];
-// eslint-disable-next-line
-export const InitialForm = wtf`
-  What-The-Form Test!
-  ${{
-    type: 'group',
-    children: [
-      { type: 'short', placeholder: 'Test...' },
-      { type: 'short', placeholder: 'Test...' },
-    ],
-  }}
-  ${{ type: 'long', placeholder: 'Hello World! What The Form?' }}
-  ${{ type: 'button', text: 'test' }}
-  ${{ type: 'check', label: 'Watch your language' }}
-  ${{ type: 'drop', placeholder: 'select...', options }}
-`;
 
-/* TODO: assess if this project would be better served by using a
-json format? NOTE: Json doesn't like duplicate keys. */
+const submitHandler = (state) => {
+  console.log(state);
+};
 
-/* EG
+const InitialForm = wtf({
+  header: 'What the Form?',
+  onSubmit: submitHandler,
+  group: { inputLine1: { placeholder: 'Test...' }, inputLine2: { placeholder: 'Test...' } },
+  inputArea1: { placeholder: 'example example', name: 'firstName' },
+  inputArea2: { placeholder: 'Hello World! What The Form?', name: 'lastName' },
+  button: { text: 'test' },
+  checkbox: { label: 'Watch your language', name: 'isDead' },
+  select: { placeholder: 'select...', options, name: 'select' },
+});
 
-const form = {
-  group: { short: { placeholder: 'Test...' }, short: { placeholder: 'Test...' } },
-  long: { placeholder: 'example example' },
-  long: { placeholder: 'Hello World! What The Form?' },
-  button: { type: 'button', text: 'test' },
-  check: { label: 'Watch your language' },
-}; */
+export default InitialForm;

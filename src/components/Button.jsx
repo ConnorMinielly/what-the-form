@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import React from 'react';
+import { Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-// TODO: Replace Componentent types with s-ui form subtypes
+const wtfButton = (props) => {
+  const { text, ...rest } = props;
+  return <Form.Button {...rest}>{text}</Form.Button>;
+};
 
-// eslint-disable-next-line
-class wtfButton extends Component {
-  render() {
-    // eslint-disable-next-line
-    return <Button>{this.props.text}</Button>;
-  }
-}
+wtfButton.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
 export default wtfButton;

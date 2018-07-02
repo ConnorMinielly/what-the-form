@@ -1,5 +1,5 @@
 import 'semantic-ui-css/semantic.min.css';
-import React from 'react';
+import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 import wtfButton from '../components/Button';
 import wtfShortText from '../components/ShortText';
@@ -9,31 +9,43 @@ import wtfDropdown from '../components/Dropdown';
 
 const components = {
   button: wtfButton,
-  short: wtfShortText,
-  long: wtfLongText,
-  check: wtfCheckbox,
-  drop: wtfDropdown,
+  inputLine: wtfShortText,
+  inputArea: wtfLongText,
+  checkbox: wtfCheckbox,
+  select: wtfDropdown,
   group: Form.Group,
 };
 
-const composeComponent = (part) => {
-  const Comp = components[part.type];
+const composeComponent = (componentData, handleChange) => {
+  const Comp = components[componentData[0].replace(/[0-9]/g, '')];
   if (Comp.name !== 'FormGroup') {
-    return (
-      <Form.Field>
-        <Comp {...part} />
-      </Form.Field>
-    );
+    return <Comp onChange={handleChange} {...componentData[1]} />;
   }
-  return <Comp>{part.children.map(p => composeComponent(p))}</Comp>;
+  return <Comp>{Object.entries(componentData[1]).map(p => composeComponent(p))}</Comp>;
 };
 
-// eslint-disable-next-line
-const wtf = (strings, ...parts) => ({ className }) => (
-  <Form className={className}>
-    {strings[0] && <h1>{strings[0]}</h1>}
-    {parts.map(part => composeComponent(part))}
-  </Form>
-);
+const wtf = formDef =>
+  class wtfForm extends Component {
+    state = {};
+
+    handleChange = (e, { name, value }) => {
+      if (name !== undefined) {
+        this.setState({ [name]: value });
+      }
+    };
+
+    render(className) {
+      return (
+        <Form className={className} onSubmit={() => formDef.onSubmit(this.state)}>
+          {Object.entries(formDef).map(entry =>
+              (entry[0] !== 'header' ? (
+                entry[0] !== 'onSubmit' && composeComponent(entry, this.handleChange)
+              ) : (
+                <h1>{formDef.header}</h1>
+              )))}
+        </Form>
+      );
+    }
+  };
 
 export default wtf;
