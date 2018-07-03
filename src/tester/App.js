@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import InitialForm from './formExample';
+import WtfForm from './Example';
 
 // eslint-disable-next-line
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <InitialForm />
+        <WtfForm />
       </div>
     );
   }

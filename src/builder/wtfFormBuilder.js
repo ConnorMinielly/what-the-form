@@ -1,18 +1,18 @@
 import 'semantic-ui-css/semantic.min.css';
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
-import wtfButton from '../components/Button';
-import wtfShortText from '../components/ShortText';
-import wtfLongText from '../components/LongText';
-import wtfCheckbox from '../components/Checkbox';
-import wtfDropdown from '../components/Dropdown';
+import wtfButton from '../components/wtfButton';
+import wtfInputLine from '../components/wtfInputLine';
+import wtfInputArea from '../components/wtfInputArea';
+import wtfCheckbox from '../components/wtfCheckbox';
+import wtfSelect from '../components/wtfSelect';
 
 const components = {
   button: wtfButton,
-  inputLine: wtfShortText,
-  inputArea: wtfLongText,
+  inputLine: wtfInputLine,
+  inputArea: wtfInputArea,
   checkbox: wtfCheckbox,
-  select: wtfDropdown,
+  select: wtfSelect,
   group: Form.Group,
 };
 
