@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InitialForm } from './formExample';
+import InitialForm from './formExample';
 
 // eslint-disable-next-line
 class App extends Component {

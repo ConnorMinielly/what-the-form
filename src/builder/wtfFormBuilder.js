@@ -24,7 +24,7 @@ const composeComponent = (componentData, handleChange) => {
   return <Comp>{Object.entries(componentData[1]).map(p => composeComponent(p))}</Comp>;
 };
 
-const wtf = formDef =>
+const wtf = (formDef, onSubmit) =>
   class wtfForm extends Component {
     state = {};
 
@@ -36,10 +36,10 @@ const wtf = formDef =>
 
     render(className) {
       return (
-        <Form className={className} onSubmit={() => formDef.onSubmit(this.state)}>
+        <Form className={className} onSubmit={() => onSubmit(this.state)}>
           {Object.entries(formDef).map(entry =>
               (entry[0] !== 'header' ? (
-                entry[0] !== 'onSubmit' && composeComponent(entry, this.handleChange)
+                composeComponent(entry, this.handleChange)
               ) : (
                 <h1>{formDef.header}</h1>
               )))}

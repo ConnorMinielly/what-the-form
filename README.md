@@ -22,8 +22,6 @@ this isn't a npm package yet because we're scrubs and we're still learning how t
 import React, { Component } from 'react';
 import wtf from '../builder/wtfFormBuilder'; // This will change.
 
-// This'll all change too!
-
 // define an array of options for the dropdown control.
 const options = [
   {
@@ -44,16 +42,18 @@ const submitHandler = (state) => {
 };
 
 // Create the form component
-const InitialForm = wtf({
-  header: 'What the Form?',
-  onSubmit: submitHandler,
-  group: { inputLine1: { placeholder: 'Test...' }, inputLine2: { placeholder: 'Test...' } },
-  inputArea1: { placeholder: 'example example', name: 'firstName' },
-  inputArea2: { placeholder: 'Hello World! What The Form?', name: 'lastName' },
-  button: { text: 'test' },
-  checkbox: { label: 'Watch your language', name: 'isDead' },
-  select: { placeholder: 'select...', options, name: 'select' },
-});
+const WtfForm = wtf(
+  {
+    header: 'What the Form?',
+    group: { inputLine1: { placeholder: 'Test...' }, inputLine2: { placeholder: 'Test...' } },
+    inputArea1: { placeholder: 'example example', name: 'firstName' },
+    inputArea2: { placeholder: 'Hello World! What The Form?', name: 'lastName' },
+    button: { text: 'test' },
+    checkbox: { label: 'Watch your language', name: 'isDead' },
+    select: { placeholder: 'select...', options, name: 'select' },
+  },
+  submitHandler,
+  );
 
 class App extends Component {
   render() {
