@@ -20,12 +20,15 @@ const submitHandler = (state) => {
 const WtfForm = wtf(
   {
     header: 'What the Form?',
-    group: { inputLine1: { placeholder: 'Test...' }, inputLine2: { placeholder: 'Test...' } },
-    inputArea1: { placeholder: 'example example', name: 'firstName' },
-    inputArea2: { placeholder: 'Hello World! What The Form?', name: 'lastName' },
-    button: { text: 'test' },
-    checkbox: { label: 'Watch your language', name: 'isDead' },
-    select: { placeholder: 'select...', options, name: 'select' },
+    group: {
+      inputLine1: { placeholder: 'First Name...', name: 'firstName' },
+      inputLine2: { placeholder: 'Last Name...', name: 'lastName' },
+    },
+    inputArea1: { placeholder: 'Give Me Your Life Story...', name: 'lifeStory' },
+    inputArea2: { placeholder: 'What The Form?', name: 'randomStuff' },
+    checkbox: { label: 'Checked?', name: 'isChecked' },
+    select: { placeholder: 'Select Example...', options, name: 'selectExample' },
+    button: { text: 'Submit' },
   },
   submitHandler,
 );
