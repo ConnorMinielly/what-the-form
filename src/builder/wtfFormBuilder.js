@@ -17,18 +17,22 @@ const components = {
 };
 
 const composeComponent = (componentData, handleChange) => {
-  const Comp = components[componentData[0].replace(/[0-9]/g, '')];
-  if (Comp.name !== 'FormGroup') {
-    return <Comp onChange={handleChange} {...componentData[1]} />;
+  const NewComponent = components[componentData[0].replace(/[0-9]/g, '')];
+  if (NewComponent.name !== 'FormGroup') {
+    return <NewComponent onChange={handleChange} {...componentData[1]} />;
   }
-  return <Comp>{Object.entries(componentData[1]).map(p => composeComponent(p))}</Comp>;
+  return (
+    <NewComponent>
+      {Object.entries(componentData[1]).map(subComponent => composeComponent(subComponent))}
+    </NewComponent>
+  );
 };
 
 const wtf = (formDef, onSubmit) =>
   class wtfForm extends Component {
     state = {};
 
-    handleChange = (e, { name, value }) => {
+    handleChange = (event, { name, value }) => {
       if (name !== undefined) {
         this.setState({ [name]: value });
       }

@@ -7,9 +7,9 @@ class wtfCheckbox extends Component {
     checked: false,
   };
 
-  toggle = (e, { name }) => {
+  toggle = (event, { name }) => {
     this.setState({ checked: !this.state.checked }, () =>
-      this.onChange(e, { name, value: this.state.checked }));
+      this.onChange(event, { name, value: this.state.checked }));
   };
 
   render() {

@@ -17,7 +17,7 @@ const submitHandler = (state) => {
   console.log(state);
 };
 
-const InitialForm = wtf(
+const WtfForm = wtf(
   {
     header: 'What the Form?',
     group: { inputLine1: { placeholder: 'Test...' }, inputLine2: { placeholder: 'Test...' } },
@@ -30,4 +30,4 @@ const InitialForm = wtf(
   submitHandler,
 );
 
-export default InitialForm;
+export default WtfForm;
