@@ -2,7 +2,7 @@
 
 <p align="center">
   <br /><br />
-  <img src="./src/resources/logo.svg" alt="WTF" height="150" />
+  <img src="./resources/wtf-logo.svg" alt="WTF" height="150" />
   <br /><br />
 </p>
 
