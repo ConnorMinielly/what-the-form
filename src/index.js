@@ -1,5 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './tester/App';
+/**
+ * @class ExampleComponent
+ */
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import wtf from './WtfBuilder/wtfFormBuilder';
+
+export default wtf;

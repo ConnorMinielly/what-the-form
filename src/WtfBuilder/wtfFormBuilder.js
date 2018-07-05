@@ -1,11 +1,11 @@
 import 'semantic-ui-css/semantic.min.css';
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
-import wtfButton from '../components/wtfButton';
-import wtfInputLine from '../components/wtfInputLine';
-import wtfInputArea from '../components/wtfInputArea';
-import wtfCheckbox from '../components/wtfCheckbox';
-import wtfSelect from '../components/wtfSelect';
+import wtfButton from '../WtfComponents/wtfButton';
+import wtfInputLine from '../WtfComponents/wtfInputLine';
+import wtfInputArea from '../WtfComponents/wtfInputArea';
+import wtfCheckbox from '../WtfComponents/wtfCheckbox';
+import wtfSelect from '../WtfComponents/wtfSelect';
 
 const components = {
   button: wtfButton,
@@ -23,7 +23,9 @@ const composeComponent = (componentData, handleChange) => {
   }
   return (
     <NewComponent>
-      {Object.entries(componentData[1]).map(subComponent => composeComponent(subComponent))}
+      {Object.entries(componentData[1]).map(subComponent =>
+        composeComponent(subComponent),
+      )}
     </NewComponent>
   );
 };
@@ -41,12 +43,14 @@ const wtf = (formDef, onSubmit) =>
     render(className) {
       return (
         <Form className={className} onSubmit={() => onSubmit(this.state)}>
-          {Object.entries(formDef).map(entry =>
-              (entry[0] !== 'header' ? (
+          {Object.entries(formDef).map(
+            entry =>
+              entry[0] !== 'header' ? (
                 composeComponent(entry, this.handleChange)
               ) : (
                 <h1>{formDef.header}</h1>
-              )))}
+              ),
+          )}
         </Form>
       );
     }
