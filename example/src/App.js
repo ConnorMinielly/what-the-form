@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import WtfForm from './Example';
 
-import ExampleComponent from 'what-the-form'
-
-export default class App extends Component {
-  render () {
+// eslint-disable-next-line
+class App extends Component {
+  render() {
     return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
+      <div className="App">
+        <WtfForm />
       </div>
-    )
+    );
   }
 }
+
+export default App;
