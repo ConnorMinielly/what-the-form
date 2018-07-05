@@ -8,7 +8,8 @@
 
 # What The Form?
 
-[![NPM](https://img.shields.io/npm/v/what-the-form.svg)](https://www.npmjs.com/package/what-the-form) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+![with-coffee](https://img.shields.io/badge/made%20with-%E2%98%95%EF%B8%8F%20coffee-yellow.svg)
+[![with-love](https://img.shields.io/badge/made%20with-%F0%9F%92%8C-red.svg)](http://www.neopets.com/) [![NPM](https://img.shields.io/npm/v/what-the-form.svg)](https://www.npmjs.com/package/what-the-form) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 A Form generator for sematic-ui forms that allows one to directly and clearly define simple to moderately complex forms.
 
