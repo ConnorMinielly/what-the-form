@@ -1,5 +1,3 @@
-> Form Generator For Sematic-UI React Forms
-
 <p align="center">
   <br /><br />
   <img src="./resources/wtf-logo.svg" alt="WTF" height="150" />
@@ -8,8 +6,10 @@
 
 # What The Form?
 
+> Form Generator For Sematic-UI React Forms
+
 ![with-coffee](https://img.shields.io/badge/made%20with-%E2%98%95%EF%B8%8F%20coffee-yellow.svg)
-[![with-love](https://img.shields.io/badge/made%20with-%F0%9F%92%8C-red.svg)](http://www.neopets.com/) [![NPM](https://img.shields.io/npm/v/what-the-form.svg)](https://www.npmjs.com/package/what-the-form) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![with-love](https://img.shields.io/badge/made%20with-%F0%9F%92%8C-red.svg)](http://www.neopets.com/) [![NPM](https://img.shields.io/npm/v/what-the-form.svg)](https://www.npmjs.com/package/what-the-form) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 A Form generator for sematic-ui forms that allows one to directly and clearly define simple to moderately complex forms.
 
@@ -21,8 +21,6 @@ We created WTF to address the fact that writing even simple forms in react made 
 
 ## Install
 
-**This Project Is Not Yet Deployed To NPM**
-
 ```bash
 npm install what-the-form
 
@@ -33,7 +31,7 @@ yarn add what-the-form
 
 ## How The Form?
 
-this isn't a npm package yet because we're scrubs and we're still learning how to do that kinda stuff, but here's how it works in the code base so far:
+It's pretty simple so far, check it:
 
 ```javascript
 import React, { Component } from 'react';
@@ -88,4 +86,4 @@ class App extends Component {
 
 ## License
 
-MIT © [ConnorMinielly](https://github.com/ConnorMinielly)
+MIT © [Connor Minielly](https://github.com/ConnorMinielly)
