@@ -4,7 +4,11 @@
   "description": "Form Generator For Sematic-UI React Forms",
   "author": "ConnorMinielly",
   "license": "MIT",
-  "repository": "ConnorMinielly/what-the-form",
+  "homepage": "https://github.com/ConnorMinielly/what-the-form#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ConnorMinielly/what-the-form.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
