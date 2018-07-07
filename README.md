@@ -19,7 +19,7 @@ This project is currently in a theoretical stage, there is a verifiable problem 
 
 We created WTF to address the fact that writing even simple forms in react made us want to swear. Like a lot. All the time. We sat there staring at a big verbose ugly section of JSX and said "Whaaat the fuck..." because sometimes those things are ugly as sin. Using a project like semantic UI abstracted a lot of that struggle as far as the visual composition of the forms went, but it still seemed like it should just be easier. Sometimes all you want is a contacts form and you have to pump out about 50-60 lines to put everything in place. We decided to create a tool that would allow us to use a JSON-like syntax to define a form and do everything else for us with a single component in our JSX tree, and WTF is that tool.
 
-## Install
+## Where the Form? (Install)
 
 ```bash
 npm install what-the-form
