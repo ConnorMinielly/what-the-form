@@ -6,9 +6,12 @@ class wtfCheckbox extends Component {
     checked: false,
   };
 
-  toggle = (event, { name }) => {
+  toggle = event => {
     this.setState({ checked: !this.state.checked }, () =>
-      this.onChange(event, { name, value: this.state.checked }),
+      this.onChange(event, {
+        name: this.props.name,
+        value: this.state.checked,
+      }),
     );
   };
 
@@ -18,7 +21,7 @@ class wtfCheckbox extends Component {
     return (
       <input
         type="checkbox"
-        value={String(this.state.checked)}
+        value={this.state.checked}
         checked={this.state.checked}
         onChange={this.toggle}
         {...rest}

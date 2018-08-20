@@ -4,21 +4,21 @@ class wtfInputPhone extends React.Component {
   state = {
     error: false,
     current: '',
-    attempt: '',
     validation: this.props.validation,
   };
 
-  handleValidation = () => {
-    let { validation } = this.state;
-    if (new RegExp(validation).test(this.state.current)) {
+  checkInput = event => {
+    const { value } = event.target;
+    const { validation } = this.state;
+    if (validation.test(value)) {
+      this.setState({ current: value }, () =>
+        this.onChange(event, {
+          name: this.props.name,
+          value: this.state.current,
+        }),
+      );
+    } else {
     }
-  };
-
-  checkInput = (e, { name }) => {
-    console.log(e.target);
-    this.setState({ current: e.target.value }, e =>
-      this.onChange(e, { name, value: this.state.current }),
-    );
   };
 
   render() {

@@ -21,8 +21,10 @@ const WtfForm = wtf(
   {
     header: 'What the Form?',
     group: {
-      textLine1: { placeholder: 'First Name...', name: 'firstName' },
-      textLine2: { placeholder: 'Last Name...', name: 'lastName' },
+      children: {
+        textLine1: { placeholder: 'First Name...', name: 'firstName' },
+        textLine2: { placeholder: 'Last Name...', name: 'lastName' },
+      },
     },
     textArea1: {
       placeholder: 'Give Me Your Life Story...',
@@ -35,7 +37,7 @@ const WtfForm = wtf(
       options,
       name: 'selectExample',
     },
-    phone: { validation: /[0-9]{10,11}/g, name: 'testPhone' },
+    phone: { validation: /^[0-9]{0,11}$/g, name: 'testPhone' },
     button: { text: 'Submit' },
   },
   submitHandler,

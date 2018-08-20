@@ -1,12 +1,11 @@
-import 'semantic-ui-css/semantic.min.css';
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
 import wtfButton from '../WtfComponents/wtfButton';
 import wtfInputLine from '../WtfComponents/wtfInputLine';
 import wtfInputArea from '../WtfComponents/wtfInputArea';
 import wtfCheckbox from '../WtfComponents/wtfCheckbox';
 import wtfSelect from '../WtfComponents/wtfSelect';
 import wtfInputPhone from '../WtfComponents/wtfPhoneInput';
+import wtfGroup from '../WtfComponents/wtfGroup';
 
 const components = {
   button: wtfButton,
@@ -14,18 +13,18 @@ const components = {
   textArea: wtfInputArea,
   checkbox: wtfCheckbox,
   select: wtfSelect,
-  group: Form.Group,
+  group: wtfGroup,
   phone: wtfInputPhone,
 };
 
 const composeComponent = (componentData, handleChange) => {
   const NewComponent = components[componentData[0].replace(/[0-9]/g, '')];
-  if (NewComponent.name !== 'FormGroup') {
+  if (NewComponent.name !== 'wtfGroup') {
     return <NewComponent onChange={handleChange} {...componentData[1]} />;
   }
   return (
-    <NewComponent>
-      {Object.entries(componentData[1]).map(subComponent =>
+    <NewComponent {...componentData[1].props}>
+      {Object.entries(componentData[1].children).map(subComponent =>
         composeComponent(subComponent, handleChange),
       )}
     </NewComponent>
@@ -37,7 +36,6 @@ const wtf = (formDef, onSubmit) =>
     state = {};
 
     handleChange = (event, { name, value }) => {
-      console.log(this);
       if (name !== undefined) {
         this.setState({ [name]: value });
       }
@@ -45,7 +43,7 @@ const wtf = (formDef, onSubmit) =>
 
     render(className) {
       return (
-        <Form
+        <form
           className={className}
           onSubmit={() => onSubmit && onSubmit(this.state)}
         >
@@ -57,7 +55,7 @@ const wtf = (formDef, onSubmit) =>
                 <h1>{formDef.header}</h1>
               ),
           )}
-        </Form>
+        </form>
       );
     }
   };
