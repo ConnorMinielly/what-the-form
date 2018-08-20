@@ -13,32 +13,35 @@ const options = [
   },
 ];
 
-const submitHandler = state => {
+const submitHandler = (e, state) => {
+  e.preventDefault();
   console.log(state);
 };
 
 const WtfForm = wtf(
   {
     header: 'What the Form?',
-    group: {
+    nameGroup: {
+      type: 'group',
+      props: { className: 'new-name' },
       children: {
-        textLine1: { placeholder: 'First Name...', name: 'firstName' },
-        textLine2: { placeholder: 'Last Name...', name: 'lastName' },
+        firstName: { type: 'textLine', placeholder: 'First Name...' },
+        LastName: { type: 'textLine', placeholder: 'Last Name...' },
       },
     },
-    textArea1: {
+    lifeStory: {
+      type: 'textArea',
       placeholder: 'Give Me Your Life Story...',
-      name: 'lifeStory',
     },
-    textArea2: { placeholder: 'What The Form?', name: 'randomStuff' },
-    checkbox: { label: 'Checked?', name: 'isChecked' },
-    select: {
+    randomStuff: { type: 'textArea', placeholder: 'What The Form?' },
+    isChecked: { type: 'checkbox', label: 'Checked?' },
+    selectExample: {
+      type: 'select',
       placeholder: 'Select Example...',
       options,
-      name: 'selectExample',
     },
-    phone: { validation: /^[0-9]{0,11}$/g, name: 'testPhone' },
-    button: { text: 'Submit' },
+    testPhone: { type: 'phone', validation: /^[0-9]{0,11}$/g },
+    submit: { type: 'button', text: 'Submit' },
   },
   submitHandler,
 );

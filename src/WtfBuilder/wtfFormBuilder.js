@@ -18,9 +18,12 @@ const components = {
 };
 
 const composeComponent = (componentData, handleChange) => {
-  const NewComponent = components[componentData[0].replace(/[0-9]/g, '')];
+  const NewComponent = components[componentData[1].type];
   if (NewComponent.name !== 'wtfGroup') {
-    return <NewComponent onChange={handleChange} {...componentData[1]} />;
+    const { type, ...rest } = componentData[1];
+    return (
+      <NewComponent onChange={handleChange} name={componentData[0]} {...rest} />
+    );
   }
   return (
     <NewComponent {...componentData[1].props}>
@@ -45,7 +48,7 @@ const wtf = (formDef, onSubmit) =>
       return (
         <form
           className={className}
-          onSubmit={() => onSubmit && onSubmit(this.state)}
+          onSubmit={e => onSubmit && onSubmit(e, this.state)}
         >
           {Object.entries(formDef).map(
             entry =>
