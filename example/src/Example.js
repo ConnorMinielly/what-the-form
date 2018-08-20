@@ -21,20 +21,21 @@ const WtfForm = wtf(
   {
     header: 'What the Form?',
     group: {
-      inputLine1: { placeholder: 'First Name...', name: 'firstName' },
-      inputLine2: { placeholder: 'Last Name...', name: 'lastName' },
+      textLine1: { placeholder: 'First Name...', name: 'firstName' },
+      textLine2: { placeholder: 'Last Name...', name: 'lastName' },
     },
-    inputArea1: {
+    textArea1: {
       placeholder: 'Give Me Your Life Story...',
       name: 'lifeStory',
     },
-    inputArea2: { placeholder: 'What The Form?', name: 'randomStuff' },
+    textArea2: { placeholder: 'What The Form?', name: 'randomStuff' },
     checkbox: { label: 'Checked?', name: 'isChecked' },
     select: {
       placeholder: 'Select Example...',
       options,
       name: 'selectExample',
     },
+    phone: { validation: /[0-9]{10,11}/g, name: 'testPhone' },
     button: { text: 'Submit' },
   },
   submitHandler,

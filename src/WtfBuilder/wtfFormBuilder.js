@@ -6,14 +6,16 @@ import wtfInputLine from '../WtfComponents/wtfInputLine';
 import wtfInputArea from '../WtfComponents/wtfInputArea';
 import wtfCheckbox from '../WtfComponents/wtfCheckbox';
 import wtfSelect from '../WtfComponents/wtfSelect';
+import wtfInputPhone from '../WtfComponents/wtfPhoneInput';
 
 const components = {
   button: wtfButton,
-  inputLine: wtfInputLine,
-  inputArea: wtfInputArea,
+  textLine: wtfInputLine,
+  textArea: wtfInputArea,
   checkbox: wtfCheckbox,
   select: wtfSelect,
   group: Form.Group,
+  phone: wtfInputPhone,
 };
 
 const composeComponent = (componentData, handleChange) => {
@@ -24,7 +26,7 @@ const composeComponent = (componentData, handleChange) => {
   return (
     <NewComponent>
       {Object.entries(componentData[1]).map(subComponent =>
-        composeComponent(subComponent),
+        composeComponent(subComponent, handleChange),
       )}
     </NewComponent>
   );
@@ -35,6 +37,7 @@ const wtf = (formDef, onSubmit) =>
     state = {};
 
     handleChange = (event, { name, value }) => {
+      console.log(this);
       if (name !== undefined) {
         this.setState({ [name]: value });
       }
@@ -42,7 +45,10 @@ const wtf = (formDef, onSubmit) =>
 
     render(className) {
       return (
-        <Form className={className} onSubmit={() => onSubmit(this.state)}>
+        <Form
+          className={className}
+          onSubmit={() => onSubmit && onSubmit(this.state)}
+        >
           {Object.entries(formDef).map(
             entry =>
               entry[0] !== 'header' ? (

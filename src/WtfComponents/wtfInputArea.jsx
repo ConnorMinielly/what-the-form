@@ -1,6 +1,5 @@
 import React from 'react';
-import { Form, TextArea } from 'semantic-ui-react';
 
-const wtfInputArea = props => <Form.Input control={TextArea} {...props} />;
+const wtfInputArea = props => <textarea {...props} />;
 
 export default wtfInputArea;
