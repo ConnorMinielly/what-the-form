@@ -1,6 +1,12 @@
 import React from 'react';
-import { Form, Input } from 'semantic-ui-react';
 
-const wtfInputLine = props => <Form.Input control={Input} {...props} />;
+const wtfInputLine = ({ onChange, ...rest }) => {
+  return (
+    <input
+      {...rest}
+      onChange={e => onChange(e, { name: rest.name, value: e.target.value })}
+    />
+  );
+};
 
 export default wtfInputLine;

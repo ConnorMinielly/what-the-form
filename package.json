@@ -17,21 +17,17 @@
     "test:watch": "react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
+    "dev": "concurrently \"rollup -c -w\" \"cd example && yarn start\"",
     "prepare": "yarn run build",
     "dev": "concurrently \"rollup -c -w\" \"cd example && yarn start\"",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {
-    "semantic-ui-css": "^2.3.2",
-    "semantic-ui-react": "^0.81.3"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0",
-    "semantic-ui-css": "^2.3.2",
-    "semantic-ui-react": "^0.81.3"
+    "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
