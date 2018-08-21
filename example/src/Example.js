@@ -1,4 +1,5 @@
-import wtf from 'what-the-form';
+import { wtf, components as comps } from 'what-the-form';
+import styled from 'styled-components';
 
 const options = [
   {
@@ -23,9 +24,9 @@ const WtfForm = wtf(
     header: 'What the Form?',
     nameGroup: {
       type: 'group',
-      props: { className: 'new-name' },
       children: {
         firstName: { type: 'textLine', placeholder: 'First Name...' },
+        middleName: { type: 'textLine', placeholder: 'Middle Name...' },
         LastName: { type: 'textLine', placeholder: 'Last Name...' },
       },
     },
@@ -35,6 +36,12 @@ const WtfForm = wtf(
     },
     randomStuff: { type: 'textArea', placeholder: 'What The Form?' },
     isChecked: { type: 'checkbox', label: 'Checked?' },
+    newGroup: {
+      type: 'group',
+      children: {
+        ners: { type: 'textArea', placeholder: 'What The Form?' },
+      },
+    },
     selectExample: {
       type: 'select',
       placeholder: 'Select Example...',

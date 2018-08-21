@@ -10,7 +10,7 @@ class wtfInputPhone extends React.Component {
   checkInput = event => {
     const { value } = event.target;
     const { validation } = this.state;
-    if (validation.test(value)) {
+    if (new RegExp(validation).test(value)) {
       this.setState({ current: value }, () =>
         this.onChange(event, {
           name: this.props.name,
