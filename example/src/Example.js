@@ -1,4 +1,5 @@
-import wtf from 'what-the-form';
+import { wtf, components as comps } from 'what-the-form';
+import styled from 'styled-components';
 
 const options = [
   {
@@ -13,29 +14,41 @@ const options = [
   },
 ];
 
-const submitHandler = state => {
+const submitHandler = (e, state) => {
+  e.preventDefault();
   console.log(state);
 };
 
 const WtfForm = wtf(
   {
     header: 'What the Form?',
-    group: {
-      inputLine1: { placeholder: 'First Name...', name: 'firstName' },
-      inputLine2: { placeholder: 'Last Name...', name: 'lastName' },
+    nameGroup: {
+      type: 'group',
+      children: {
+        firstName: { type: 'textLine', placeholder: 'First Name...' },
+        middleName: { type: 'textLine', placeholder: 'Middle Name...' },
+        LastName: { type: 'textLine', placeholder: 'Last Name...' },
+      },
     },
-    inputArea1: {
+    lifeStory: {
+      type: 'textArea',
       placeholder: 'Give Me Your Life Story...',
-      name: 'lifeStory',
     },
-    inputArea2: { placeholder: 'What The Form?', name: 'randomStuff' },
-    checkbox: { label: 'Checked?', name: 'isChecked' },
-    select: {
+    randomStuff: { type: 'textArea', placeholder: 'What The Form?' },
+    isChecked: { type: 'checkbox', label: 'Checked?' },
+    newGroup: {
+      type: 'group',
+      children: {
+        ners: { type: 'textArea', placeholder: 'What The Form?' },
+      },
+    },
+    selectExample: {
+      type: 'select',
       placeholder: 'Select Example...',
       options,
-      name: 'selectExample',
     },
-    button: { text: 'Submit' },
+    testPhone: { type: 'phone', validation: /^[0-9]{0,11}$/g },
+    submit: { type: 'button', text: 'Submit' },
   },
   submitHandler,
 );

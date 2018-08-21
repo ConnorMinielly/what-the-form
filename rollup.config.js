@@ -19,6 +19,7 @@ export default {
       format: 'es',
     },
   ],
+  external: ['styled-components'],
   plugins: [
     external(),
     postcss({

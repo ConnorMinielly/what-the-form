@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Form, Checkbox } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 class wtfCheckbox extends Component {
@@ -7,18 +6,23 @@ class wtfCheckbox extends Component {
     checked: false,
   };
 
-  toggle = (event, { name }) => {
+  toggle = event => {
     this.setState({ checked: !this.state.checked }, () =>
-      this.onChange(event, { name, value: this.state.checked }));
+      this.onChange(event, {
+        name: this.props.name,
+        value: this.state.checked,
+      }),
+    );
   };
 
   render() {
     const { onChange, ...rest } = this.props;
     this.onChange = onChange;
     return (
-      <Form.Field
-        control={Checkbox}
-        value={String(this.state.checked)}
+      <input
+        type="checkbox"
+        value={this.state.checked}
+        checked={this.state.checked}
         onChange={this.toggle}
         {...rest}
       />

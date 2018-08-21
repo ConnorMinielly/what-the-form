@@ -2,6 +2,6 @@
  * @class ExampleComponent
  */
 
-import wtf from './WtfBuilder/wtfFormBuilder';
+import wtf, { components } from './WtfBuilder/wtfFormBuilder';
 
-export default wtf;
+export { wtf, components };

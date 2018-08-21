@@ -8,8 +8,8 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "what-the-form": "link:..",
-    "react-scripts": "^1.1.1"
+    "react-scripts": "^1.1.1",
+    "what-the-form": "link:.."
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,37 +1,49 @@
-import 'semantic-ui-css/semantic.min.css';
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import styled from 'styled-components';
 import wtfButton from '../WtfComponents/wtfButton';
 import wtfInputLine from '../WtfComponents/wtfInputLine';
 import wtfInputArea from '../WtfComponents/wtfInputArea';
 import wtfCheckbox from '../WtfComponents/wtfCheckbox';
 import wtfSelect from '../WtfComponents/wtfSelect';
+import wtfInputPhone from '../WtfComponents/wtfPhoneInput';
+import wtfGroup from '../WtfComponents/wtfGroup';
+import wtfForm from '../WtfComponents/wtfForm';
 
-const components = {
+export const components = {
   button: wtfButton,
-  inputLine: wtfInputLine,
-  inputArea: wtfInputArea,
+  textLine: wtfInputLine,
+  textArea: wtfInputArea,
   checkbox: wtfCheckbox,
   select: wtfSelect,
-  group: Form.Group,
+  group: wtfGroup,
+  phone: wtfInputPhone,
+  form: wtfForm,
 };
 
-const composeComponent = (componentData, handleChange) => {
-  const NewComponent = components[componentData[0].replace(/[0-9]/g, '')];
-  if (NewComponent.name !== 'FormGroup') {
-    return <NewComponent onChange={handleChange} {...componentData[1]} />;
+const composeComponent = (componentData, handleChange, index) => {
+  const NewComponent = components[componentData[1].type];
+  if (NewComponent.name !== 'wtfGroup') {
+    const { type, ...rest } = componentData[1];
+    return (
+      <NewComponent
+        key={index}
+        onChange={handleChange}
+        name={componentData[0]}
+        {...rest}
+      />
+    );
   }
   return (
-    <NewComponent>
-      {Object.entries(componentData[1]).map(subComponent =>
-        composeComponent(subComponent),
+    <NewComponent key={index} {...componentData[1].props}>
+      {Object.entries(componentData[1].children).map((subComponent, index) =>
+        composeComponent(subComponent, handleChange, index),
       )}
     </NewComponent>
   );
 };
 
 const wtf = (formDef, onSubmit) =>
-  class wtfForm extends Component {
+  class Wtf extends Component {
     state = {};
 
     handleChange = (event, { name, value }) => {
@@ -41,14 +53,18 @@ const wtf = (formDef, onSubmit) =>
     };
 
     render(className) {
+      const Form = components.form;
       return (
-        <Form className={className} onSubmit={() => onSubmit(this.state)}>
+        <Form
+          className={className}
+          onSubmit={e => onSubmit && onSubmit(e, this.state)}
+        >
           {Object.entries(formDef).map(
-            entry =>
+            (entry, index) =>
               entry[0] !== 'header' ? (
-                composeComponent(entry, this.handleChange)
+                composeComponent(entry, this.handleChange, index)
               ) : (
-                <h1>{formDef.header}</h1>
+                <h1 key={0}>{formDef.header}</h1>
               ),
           )}
         </Form>
